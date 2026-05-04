@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+faiss-cpu
+sentence-transformers
+requests
+pydantic
+gunicorn
+openai
+mlflow
+boto3
+langchain
+langchain-openai
