@@ -1,0 +1,159 @@
+{
+  "rows": [
+    {
+      "config": "v1 baseline (char 500/100)",
+      "model": "BAAI/bge-small-en",
+      "query_instruction": false,
+      "chunker": "char 500/100",
+      "header": false,
+      "n_chunks": 227,
+      "dev": {
+        "hit@3": 0.8617886178861789,
+        "mrr": 0.7607
+      },
+      "test": {
+        "hit@1": 0.6956521739130435,
+        "hit@3": 0.9130434782608695,
+        "hit@5": 0.9565217391304348,
+        "mrr": 0.8106
+      },
+      "test_n": 46
+    },
+    {
+      "config": "+ BGE query instruction",
+      "model": "BAAI/bge-small-en",
+      "query_instruction": true,
+      "chunker": "char 500/100",
+      "header": false,
+      "n_chunks": 227,
+      "dev": {
+        "hit@3": 0.8617886178861789,
+        "mrr": 0.8272
+      },
+      "test": {
+        "hit@1": 0.7391304347826086,
+        "hit@3": 0.8695652173913043,
+        "hit@5": 0.9130434782608695,
+        "mrr": 0.8201
+      },
+      "test_n": 46
+    },
+    {
+      "config": "+ bge-small-en-v1.5",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "char 500/100",
+      "header": false,
+      "n_chunks": 227,
+      "dev": {
+        "hit@3": 0.8861788617886179,
+        "mrr": 0.8389
+      },
+      "test": {
+        "hit@1": 0.7391304347826086,
+        "hit@3": 0.9347826086956522,
+        "hit@5": 0.9565217391304348,
+        "mrr": 0.8413
+      },
+      "test_n": 46
+    },
+    {
+      "config": "variant: + doc-title header",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "char 500/100",
+      "header": true,
+      "n_chunks": 227,
+      "dev": {
+        "hit@3": 0.8943089430894309,
+        "mrr": 0.8648
+      },
+      "test": {
+        "hit@1": 0.8043478260869565,
+        "hit@3": 0.8913043478260869,
+        "hit@5": 0.9565217391304348,
+        "mrr": 0.8641
+      },
+      "test_n": 46
+    },
+    {
+      "config": "variant: word chunks 120/30",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "word 120/30",
+      "header": false,
+      "n_chunks": 134,
+      "dev": {
+        "hit@3": 0.8780487804878049,
+        "mrr": 0.8292
+      },
+      "test": {
+        "hit@1": 0.782608695652174,
+        "hit@3": 0.9347826086956522,
+        "hit@5": 0.9565217391304348,
+        "mrr": 0.8594
+      },
+      "test_n": 46
+    },
+    {
+      "config": "variant: word 120/30 + header",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "word 120/30",
+      "header": true,
+      "n_chunks": 134,
+      "dev": {
+        "hit@3": 0.8780487804878049,
+        "mrr": 0.83
+      },
+      "test": {
+        "hit@1": 0.7608695652173914,
+        "hit@3": 0.8695652173913043,
+        "hit@5": 0.8913043478260869,
+        "mrr": 0.825
+      },
+      "test_n": 46
+    },
+    {
+      "config": "variant: word 80/20 + header",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "word 80/20",
+      "header": true,
+      "n_chunks": 199,
+      "dev": {
+        "hit@3": 0.8699186991869918,
+        "mrr": 0.8178
+      },
+      "test": {
+        "hit@1": 0.8043478260869565,
+        "hit@3": 0.8695652173913043,
+        "hit@5": 0.9130434782608695,
+        "mrr": 0.8519
+      },
+      "test_n": 46
+    },
+    {
+      "config": "variant: word 200/50 + header",
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": true,
+      "chunker": "word 200/50",
+      "header": true,
+      "n_chunks": 83,
+      "dev": {
+        "hit@3": 0.8780487804878049,
+        "mrr": 0.7877
+      },
+      "test": {
+        "hit@1": 0.782608695652174,
+        "hit@3": 0.8913043478260869,
+        "hit@5": 0.9130434782608695,
+        "mrr": 0.8392
+      },
+      "test_n": 46
+    }
+  ],
+  "selected": "variant: + doc-title header",
+  "git_sha": "62558b1",
+  "timestamp": "2026-09-29T08:42:21Z"
+}

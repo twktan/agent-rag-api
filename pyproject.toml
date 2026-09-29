@@ -1,0 +1,18 @@
+[project]
+name = "agent-rag-api"
+version = "2.0.0"
+description = "Single-agent RAG service with self-critique refinement, guardrails, evaluation and monitoring"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["B008"]  # FastAPI dependency injection uses calls in argument defaults
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

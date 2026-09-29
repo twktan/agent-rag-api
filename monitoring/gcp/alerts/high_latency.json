@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - p95 latency above 15 s",
+  "combiner": "OR",
+  "documentation": {
+    "content": "p95 end-to-end latency has been above 15 s for 10 minutes. Check the `llm_error` events and OpenAI status; the critic loop may be looping more than usual (see `rag_critic_failures`).",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "p95 latency above 15 s",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_query_latency_ms\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "300s",
+            "perSeriesAligner": "ALIGN_PERCENTILE_95",
+            "crossSeriesReducer": "REDUCE_MAX"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 15000,
+        "duration": "600s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

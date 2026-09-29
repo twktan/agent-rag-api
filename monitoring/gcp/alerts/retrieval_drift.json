@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - retrieval similarity drift",
+  "combiner": "OR",
+  "documentation": {
+    "content": "Median top-1 retrieval similarity below 0.60 for 6 hours (eval baseline median is about 0.70). Users are asking about topics the corpus does not cover: review question logs and add documents.",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "retrieval similarity drift",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_retrieval_top1\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "3600s",
+            "perSeriesAligner": "ALIGN_PERCENTILE_50",
+            "crossSeriesReducer": "REDUCE_MEAN"
+          }
+        ],
+        "comparison": "COMPARISON_LT",
+        "thresholdValue": 0.6,
+        "duration": "21600s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

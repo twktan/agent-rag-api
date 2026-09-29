@@ -1,0 +1,53 @@
+# Local observability stack: API + MLflow (traces) + Prometheus (metrics) + Grafana (dashboard).
+#
+#   cp .env.example .env   # set OPENAI_API_KEY and API_KEYS
+#   docker compose -f monitoring/docker-compose.yml up --build
+#
+#   API      http://localhost:8080/docs
+#   MLflow   http://localhost:5000      (Traces tab: one trace per request, one span per agent node)
+#   Grafana  http://localhost:3000      (anonymous viewer; dashboard "Agentic RAG - Overview")
+#   Prom     http://localhost:9090
+name: agent-rag-observability
+
+services:
+  api:
+    build:
+      context: ..
+    env_file: ../.env
+    environment:
+      ENV: dev
+      METRICS_ENABLED: "true"
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    ports: ["8080:8080"]
+    depends_on: [mlflow]
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.16.1
+    command: >
+      mlflow server --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --artifacts-destination /mlflow/artifacts
+      --allowed-hosts mlflow,mlflow:5000,localhost,localhost:5000,127.0.0.1:5000
+    volumes: ["mlflow-data:/mlflow"]
+    ports: ["5000:5000"]
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    volumes: ["./prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+    depends_on: [api]
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/rag-overview.json
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["3000:3000"]
+    depends_on: [prometheus]
+
+volumes:
+  mlflow-data:

@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - guardrail block spike",
+  "combiner": "OR",
+  "documentation": {
+    "content": "More than 20 refused requests in 15 minutes: likely an attack campaign from one key.",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "guardrail block spike",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_guardrail_blocks\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "900s",
+            "perSeriesAligner": "ALIGN_SUM",
+            "crossSeriesReducer": "REDUCE_SUM"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 20,
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

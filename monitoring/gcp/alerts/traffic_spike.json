@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - traffic spike (cost / abuse)",
+  "combiner": "OR",
+  "documentation": {
+    "content": "More than 200 queries in an hour. Check `caller` in the logs; revoke the key or lower quotas if abusive. The OpenAI project budget is the hard stop.",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "traffic spike (cost / abuse)",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_query_count\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "3600s",
+            "perSeriesAligner": "ALIGN_SUM",
+            "crossSeriesReducer": "REDUCE_SUM"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 200,
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

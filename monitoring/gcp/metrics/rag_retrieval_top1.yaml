@@ -1,0 +1,13 @@
+name: 'rag_retrieval_top1'
+description: 'Top-1 retrieval cosine similarity (query/corpus drift signal)'
+filter: '__BASE_FILTER__ AND (jsonPayload.event="query_completed" AND NOT jsonPayload.cached=true AND jsonPayload.route="rag")'
+valueExtractor: 'EXTRACT(jsonPayload.retrieval_top1)'
+metricDescriptor:
+  metricKind: "DELTA"
+  valueType: "DISTRIBUTION"
+  unit: "1"
+bucketOptions:
+  linearBuckets:
+    numFiniteBuckets: 20
+    width: 0.05
+    offset: 0
