@@ -58,7 +58,7 @@
       "test_n": 46
     },
     {
-      "config": "variant: + doc-title header",
+      "config": "+ doc-title chunk header",
       "model": "BAAI/bge-small-en-v1.5",
       "query_instruction": true,
       "chunker": "char 500/100",
@@ -153,7 +153,7 @@
       "test_n": 46
     }
   ],
-  "selected": "variant: + doc-title header",
-  "git_sha": "62558b1",
-  "timestamp": "2026-09-29T08:42:21Z"
+  "selected": "+ doc-title chunk header",
+  "git_sha": "5d81ff6",
+  "timestamp": "2026-09-29T08:58:12Z"
 }
