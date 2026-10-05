@@ -33,7 +33,7 @@ def test_chunk_header_and_title():
 
 def test_load_corpus_is_sorted(tmp_path):
     for name in ("b.txt", "a.txt", "c.md"):
-        (tmp_path / name).write_text(f"text {name}")
+        (tmp_path / name).write_text(f"text {name}", encoding="utf-8")
     assert [d.source for d in load_corpus(tmp_path)] == ["a", "b"]
 
 
@@ -68,7 +68,7 @@ def test_save_load_roundtrip_and_corruption_check(tmp_path):
     loaded = FAISSVectorStore.load(tmp_path)
     assert loaded.manifest["n_chunks"] == 5 and loaded.manifest["embedding_model"] == "fake"
     assert loaded.search(vectors[1], 1)[0][0].source == "doc1"
-    (tmp_path / "chunks.jsonl").write_text("")
+    (tmp_path / "chunks.jsonl").write_text("", encoding="utf-8")
     with pytest.raises(ValueError, match="Corrupt"):
         FAISSVectorStore.load(tmp_path)
 

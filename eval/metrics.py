@@ -1,4 +1,4 @@
-"""Pure metric functions (no I/O), unit-tested in tests/test_eval_metrics.py."""
+"""Pure metric functions (no I/O), unit-tested in tests/test_eval_and_data.py."""
 
 import math
 from collections.abc import Iterable, Sequence
@@ -78,3 +78,14 @@ def best_threshold(scores: Sequence[float], labels: Sequence[bool]) -> float:
     def acc(t: float) -> float:
         return sum((s >= t) == y for s, y in zip(scores, labels, strict=True)) / len(scores)
     return max(mids, key=acc)
+
+
+def cohens_kappa(a: Sequence[bool], b: Sequence[bool]) -> float:
+    """Agreement between two binary raters, corrected for chance (1 = perfect, 0 = chance level)."""
+    n = len(a)
+    if n == 0 or n != len(b):
+        raise ValueError(f"need two equal-length, non-empty label lists (got {len(a)} and {len(b)})")
+    observed = sum(x == y for x, y in zip(a, b, strict=True)) / n
+    pa, pb = sum(a) / n, sum(b) / n
+    expected = pa * pb + (1 - pa) * (1 - pb)
+    return 1.0 if expected == 1 else (observed - expected) / (1 - expected)

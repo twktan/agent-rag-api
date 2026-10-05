@@ -9,7 +9,11 @@ line-length = 120
 target-version = "py311"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP", "SIM"]
+# PLW1514 flags open()/read_text()/write_text() without encoding=: on Windows the default is
+# cp1252, not UTF-8. It is a preview rule, enabled on its own via explicit-preview-rules.
+preview = true
+explicit-preview-rules = true
+select = ["E", "F", "I", "B", "UP", "SIM", "PLW1514"]
 ignore = ["B008"]  # FastAPI dependency injection uses calls in argument defaults
 
 [tool.pytest.ini_options]

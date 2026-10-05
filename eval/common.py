@@ -30,7 +30,7 @@ def utc_now() -> str:
 
 def write_json(path: Path, obj) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=str))
+    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
 
 
 def log_to_mlflow(run_name: str, params: dict, metrics: dict, artifact: Path | None = None) -> None:

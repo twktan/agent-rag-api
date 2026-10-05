@@ -52,7 +52,7 @@ class FAISSVectorStore:
             for chunk in self.chunks:
                 f.write(json.dumps(chunk.to_dict(), ensure_ascii=False) + "\n")
         self.manifest = {**manifest, "n_chunks": len(self.chunks), "dim": self.index.d}
-        (path / MANIFEST_FILE).write_text(json.dumps(self.manifest, indent=2))
+        (path / MANIFEST_FILE).write_text(json.dumps(self.manifest, indent=2), encoding="utf-8")
 
     @classmethod
     def load(cls, path: str | Path) -> "FAISSVectorStore":
@@ -61,7 +61,7 @@ class FAISSVectorStore:
         if not manifest_path.exists():
             raise FileNotFoundError(
                 f"No index at {path}. Build it with: python -m app.rag.build_index")
-        manifest = json.loads(manifest_path.read_text())
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         index = faiss.read_index(str(path / INDEX_FILE))
         with open(path / CHUNKS_FILE, encoding="utf-8") as f:
             chunks = [Chunk(**json.loads(line)) for line in f if line.strip()]

@@ -19,7 +19,7 @@ PENDING = "_pending: run `make eval`_"
 
 def _load(name: str) -> dict | None:
     path = RESULTS_DIR / name
-    return json.loads(path.read_text()) if path.exists() else None
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
 
 
 def _pct(p: dict | None) -> str:
@@ -122,11 +122,11 @@ def render() -> str:
 
 
 def main() -> None:
-    text = README.read_text()
+    text = README.read_text(encoding="utf-8")
     if START not in text or END not in text:
         raise SystemExit(f"README is missing the {START} / {END} markers")
     updated = re.sub(re.escape(START) + r".*?" + re.escape(END), lambda _: render(), text, flags=re.S)
-    README.write_text(updated)
+    README.write_text(updated, encoding="utf-8")
     print(f"Updated {README}")
 
 

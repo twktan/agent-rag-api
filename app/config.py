@@ -8,7 +8,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    # utf-8-sig: also reads a .env saved with a BOM (some Windows editors add one), which would
+    # otherwise corrupt the first key name.
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8-sig", extra="ignore")
 
     env: Literal["dev", "test", "prod"] = "dev"
     service_name: str = "agent-rag-api"

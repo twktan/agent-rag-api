@@ -67,7 +67,7 @@ _pending: run `make eval`_
 
 <!-- RESULTS:END -->
 
-To reproduce: run `make eval-retrieval && make ablate` (free, offline). Then run `make eval && make eval-no-reflection` (calls OpenAI, about US$1–2). Finally, `make readme` rewrites the block above from the saved result files in `eval/results/`. That script is the only thing that writes numbers into this README.
+To reproduce: run `make eval-retrieval && make ablate` (free, offline). Then run `make eval && make eval-no-reflection` (calls OpenAI, about US$1–2). Finally, `make readme` rewrites the block above from the saved result files in `eval/results/`. That script is the only thing that writes numbers into this README. On Windows, every `make <task>` is `.\scripts\tasks.ps1 <task>`.
 
 ---
 
@@ -273,20 +273,33 @@ curl -s https://<service>.run.app/query \
 
 ## Quickstart
 
+**Linux / macOS**
+
 ```bash
 python3.11 -m venv .venv && source .venv/bin/activate
 make install            # CPU-only torch + pinned deps
 cp .env.example .env    # set OPENAI_API_KEY and API_KEYS
 make index              # build the FAISS index from data/docs
-make run                # http://localhost:8080/docs
-make test lint          # 60 tests, no network or API key needed
+make run                # http://localhost:8081/docs
+make test lint          # 67 tests, no network or API key needed
 ```
 
-**Deploy:** `PROJECT_ID=<id> ./scripts/deploy.sh`. This runs Cloud Build, pushes to Artifact Registry and deploys to Cloud Run, with the secrets and cost limits described above. The first-time setup steps are listed at the top of the script.
+**Windows (PowerShell)**: [`scripts/tasks.ps1`](scripts/tasks.ps1) mirrors every Makefile target.
+
+```powershell
+uv venv --python 3.11 --seed .venv; .venv\Scripts\Activate.ps1
+.\scripts\tasks.ps1 install
+Copy-Item .env.example .env       # set OPENAI_API_KEY and API_KEYS
+.\scripts\tasks.ps1 index
+.\scripts\tasks.ps1 run           # http://localhost:8081/docs
+.\scripts\tasks.ps1 test
+```
+
+**Deploy:** `PROJECT_ID=<id> ./scripts/deploy.sh`. This runs Cloud Build, pushes to Artifact Registry and deploys to Cloud Run, with the secrets and cost limits described above. It needs bash and `gcloud`; from Windows, the simplest option is Google Cloud Shell in the browser. The first-time setup steps are listed at the top of the script.
 
 The index is built *inside* the Docker image, so every image contains exactly one index version (see `/ready`), and cold starts never download the embedding model.
 
-CI runs lint, the unit tests, a Docker build and an **offline retrieval quality gate**: the build fails if test Hit@3 drops below 0.85.
+CI runs lint, the unit tests on Linux **and Windows**, a Docker build and an **offline retrieval quality gate**: the build fails if test Hit@3 drops below 0.85. Lint includes a rule that rejects file I/O without an explicit `encoding=`, because Windows defaults to cp1252 rather than UTF-8.
 
 ---
 
@@ -302,9 +315,11 @@ app/
   observability/ Cloud Logging JSON logs · Prometheus metrics · optional MLflow tracing
   main.py       FastAPI app factory · security.py (auth, rate limits) · cache.py · schemas.py · config.py
 eval/           golden set · retrieval_eval · ablate_retrieval · run_eval · judge · load_test · update_readme
+                review_golden · inspect_failures · judge_calibration (human-vs-judge agreement, Cohen's κ)
 monitoring/     docker-compose stack · Grafana dashboard · GCP log-based metrics + alert policies · report.py
-tests/          60 offline tests: agent control flow (scripted fake LLM), API contract, guardrails, RAG, metrics
-scripts/        deploy.sh
+tests/          67 offline tests: agent control flow (scripted fake LLM), API contract, guardrails, RAG,
+                metrics, cross-platform I/O
+scripts/        deploy.sh (bash) · tasks.ps1 (Windows task runner)
 ```
 
 ---
