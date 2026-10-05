@@ -4,7 +4,7 @@
 ![python](https://img.shields.io/badge/python-3.11-blue)
 
 An internal AI assistant for the employees of a fictional company, Trevor Tan Incorporated (TTI).
-A single agent, built with LangGraph, handles every question:
+An agentic RAG workflow, built with LangGraph (LLM routing plus a self-critique loop), handles every question:
 - It decides whether the question is about TTI, is a general question, or is malicious.
 - It answers TTI questions from internal documents, citing its sources.
 - It checks each TTI answer against explicit criteria and rewrites it until it passes.
