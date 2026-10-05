@@ -27,10 +27,10 @@
     "mrr": 0.8641,
     "latency_ms": {
       "n": 46,
-      "mean": 18.1,
-      "p50": 18.0,
-      "p95": 22.1,
-      "p99": 30.8
+      "mean": 45.4,
+      "p50": 45.1,
+      "p95": 59.6,
+      "p99": 61.9
     }
   },
   "per_item": [
@@ -332,8 +332,8 @@
   },
   "meta": {
     "split": "test",
-    "git_sha": "5d81ff6",
-    "timestamp": "2026-09-29T08:58:30Z",
+    "git_sha": "ad9d6d9",
+    "timestamp": "2026-10-05T11:40:17Z",
     "index": {
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "query_instruction": "Represent this sentence for searching relevant passages: ",
@@ -343,7 +343,7 @@
       "chunk_header": true,
       "n_docs": 20,
       "index_hash": "4ebbca5c5a03",
-      "built_at": "2026-09-29T08:58:22.017248+00:00",
+      "built_at": "2026-10-05T11:39:40.546626+00:00",
       "n_chunks": 227,
       "dim": 384
     }
