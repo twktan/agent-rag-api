@@ -1,0 +1,35 @@
+{
+  "url": "https://fastapi-rag-141900972389.asia-southeast1.run.app",
+  "timestamp": "2026-10-05T13:39:11Z",
+  "n": 30,
+  "concurrency": 2,
+  "status_codes": {
+    "200": 10,
+    "429": 20
+  },
+  "cached": 0,
+  "first_request_ms": 186.8,
+  "client_latency_ms": {
+    "n": 10,
+    "mean": 8174.2,
+    "p50": 8145.1,
+    "p95": 12163.2,
+    "p99": 12634.3
+  },
+  "server_latency_ms": {
+    "n": 10,
+    "mean": 8090.6,
+    "p50": 8115.2,
+    "p95": 11956.7,
+    "p99": 12309.0
+  },
+  "client_latency_by_route_ms": {
+    "rag": {
+      "n": 10,
+      "mean": 8174.2,
+      "p50": 8145.1,
+      "p95": 12163.2,
+      "p99": 12634.3
+    }
+  }
+}
