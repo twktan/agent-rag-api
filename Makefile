@@ -40,10 +40,10 @@ readme:             ## write eval/results/*.json into the README results block
 	$(PY) -m eval.update_readme
 
 review:             ## print the test split of the golden set for human review
-	$(PY) -m eval.review_golden --split test
+	$(PY) -m eval.review_golden --split test --out review_test_split.md
 
 failures:           ## list misroutes, wrong answers and errors from the last eval
-	$(PY) -m eval.inspect_failures
+	$(PY) -m eval.inspect_failures --out eval_failures.md
 
 calibrate-export:   ## blind CSV of 50 judged answers for you to label
 	$(PY) -m eval.judge_calibration export

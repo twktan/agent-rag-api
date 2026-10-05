@@ -2,6 +2,7 @@
 
     python -m eval.inspect_failures                                   # eval/results/eval_test.json
     python -m eval.inspect_failures --file eval/results/eval_test_no-reflection.json
+    python -m eval.inspect_failures --out failures.md    # write to a UTF-8 file instead
 """
 
 import argparse
@@ -32,20 +33,26 @@ def failures(records: list[dict]) -> list[tuple[str, dict]]:
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--file", type=Path, default=RESULTS_DIR / "eval_test.json")
+    p.add_argument("--out", type=Path, help="write the report to this UTF-8 file instead of the terminal")
     args = p.parse_args()
     if not args.file.exists():
         raise SystemExit(f"{args.file} not found. Run the eval first (make eval / tasks.ps1 eval).")
     records = json.loads(args.file.read_text(encoding="utf-8"))["records"]
     found = failures(records)
+    lines = []
     for why, r in found:
-        print(f"\n[{r['id']}] {r['category']}: {why}")
-        print(f"  question: {r['question']}")
-        print(f"  answer:   {r.get('answer') or r.get('error')}")
+        lines += [f"\n[{r['id']}] {r['category']}: {why}", f"  question: {r['question']}",
+                  f"  answer:   {r.get('answer') or r.get('error')}"]
         if r.get("judge_final"):
-            print(f"  judge:    {r['judge_final'].get('reason')}")
+            lines.append(f"  judge:    {r['judge_final'].get('reason')}")
         if r.get("failed_criteria"):
-            print(f"  critic failed: {', '.join(r['failed_criteria'])} (decision={r.get('decision')})")
-    print(f"\n{len(found)} of {len(records)} items need a look")
+            lines.append(f"  critic failed: {', '.join(r['failed_criteria'])} (decision={r.get('decision')})")
+    lines.append(f"\n{len(found)} of {len(records)} items need a look")
+    if args.out:
+        args.out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        print(f"Wrote {args.out} ({len(found)} of {len(records)} items need a look)")
+    else:
+        print("\n".join(lines))
 
 
 if __name__ == "__main__":

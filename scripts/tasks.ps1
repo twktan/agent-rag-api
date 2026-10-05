@@ -27,6 +27,7 @@ Set-Location (Split-Path -Parent $PSScriptRoot)
 
 # UTF-8 for every file and console write, whatever the Windows code page (usually cp1252).
 $env:PYTHONUTF8 = "1"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $env:HF_HUB_DISABLE_SYMLINKS_WARNING = "1"
 
 $Py = "python"
@@ -63,8 +64,8 @@ switch ($Task) {
     "eval"               { Invoke-Step $Py @("-m", "eval.run_eval", "--split", "test") }
     "eval-no-reflection" { Invoke-Step $Py @("-m", "eval.run_eval", "--split", "test", "--max-refinements", "0", "--tag", "no-reflection") }
     "readme"             { Invoke-Step $Py @("-m", "eval.update_readme") }
-    "review"             { Invoke-Step $Py @("-m", "eval.review_golden", "--split", "test") }
-    "failures"           { Invoke-Step $Py @("-m", "eval.inspect_failures") }
+    "review"             { Invoke-Step $Py @("-m", "eval.review_golden", "--split", "test", "--out", "review_test_split.md") }
+    "failures"           { Invoke-Step $Py @("-m", "eval.inspect_failures", "--out", "eval_failures.md") }
     "calibrate-export"   { Invoke-Step $Py @("-m", "eval.judge_calibration", "export") }
     "calibrate-score"    { Invoke-Step $Py @("-m", "eval.judge_calibration", "score") }
     "docker-build"       { Invoke-Step "docker" @("build", "-t", "agent-rag-api", ".") }

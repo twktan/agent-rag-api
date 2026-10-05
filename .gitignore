@@ -16,3 +16,7 @@ mlartifacts/
 
 # Built artifact: `make index` locally, built into the Docker image in CI/CD.
 vectorstore/
+
+# Local review outputs (tasks review / failures)
+review_test_split.md
+eval_failures.md
