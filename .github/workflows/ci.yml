@@ -1,0 +1,67 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  OMP_NUM_THREADS: "2"
+
+jobs:
+  test:
+    # Windows too: its default text encoding is cp1252, not UTF-8 (see tests/test_portability.py).
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: |
+          pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.txt
+      - run: ruff check .
+        if: runner.os == 'Linux'
+      - run: pytest
+
+  retrieval-quality-gate:
+    # Offline and free: no API key needed. Fails the build if a change to chunking,
+    # the embedding model or the docs makes retrieval worse.
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: |
+          pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ hashFiles('app/config.py') }}
+      - run: python -m app.rag.build_index
+      - run: python -m eval.retrieval_eval --split test --min-hit-at-3 0.85
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-results
+          path: eval/results/retrieval_test.json
+
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t agent-rag-api:ci .

@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - error spike",
+  "combiner": "OR",
+  "documentation": {
+    "content": "More than 5 errors in 5 minutes (LLM provider outage, bad key, or a bug).",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "error spike",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_errors\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "300s",
+            "perSeriesAligner": "ALIGN_SUM",
+            "crossSeriesReducer": "REDUCE_SUM"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 5,
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

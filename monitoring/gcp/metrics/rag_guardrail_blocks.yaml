@@ -1,0 +1,11 @@
+name: 'rag_guardrail_blocks'
+description: 'Requests refused by guardrails, by layer'
+filter: '__BASE_FILTER__ AND (jsonPayload.event="query_completed" AND jsonPayload.route="refuse")'
+metricDescriptor:
+  metricKind: "DELTA"
+  valueType: "INT64"
+  labels:
+    - key: reason
+      valueType: STRING
+labelExtractors:
+  reason: "EXTRACT(jsonPayload.blocked_reason)"

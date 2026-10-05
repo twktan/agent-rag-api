@@ -1,0 +1,14 @@
+name: 'rag_query_count'
+description: 'Queries served, by route (includes cache hits)'
+filter: '__BASE_FILTER__ AND (jsonPayload.event="query_completed")'
+metricDescriptor:
+  metricKind: "DELTA"
+  valueType: "INT64"
+  labels:
+    - key: route
+      valueType: STRING
+    - key: cached
+      valueType: STRING
+labelExtractors:
+  route: "EXTRACT(jsonPayload.route)"
+  cached: "EXTRACT(jsonPayload.cached)"

@@ -1,0 +1,29 @@
+{
+  "displayName": "RAG API - critic failures rising",
+  "combiner": "OR",
+  "documentation": {
+    "content": "More than 10 RAG answers failed the critic in an hour. Usual causes: docs changed without re-indexing, a prompt change, or a model version change. Re-run `make eval`.",
+    "mimeType": "text/markdown"
+  },
+  "conditions": [
+    {
+      "displayName": "critic failures rising",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_revision\" AND metric.type = \"logging.googleapis.com/user/rag_critic_failures\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "3600s",
+            "perSeriesAligner": "ALIGN_SUM",
+            "crossSeriesReducer": "REDUCE_SUM"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 10,
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}

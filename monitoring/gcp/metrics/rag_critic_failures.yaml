@@ -1,0 +1,6 @@
+name: 'rag_critic_failures'
+description: 'RAG answers that still failed the critic after refinement'
+filter: '__BASE_FILTER__ AND (jsonPayload.event="query_completed" AND NOT jsonPayload.cached=true AND jsonPayload.route="rag" AND jsonPayload.quality_passed=false)'
+metricDescriptor:
+  metricKind: "DELTA"
+  valueType: "INT64"

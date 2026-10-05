@@ -1,0 +1,6 @@
+name: 'rag_errors'
+description: 'Error-level log entries (LLM outages, unhandled exceptions)'
+filter: '__BASE_FILTER__ AND (severity>=ERROR OR jsonPayload.event="llm_error")'
+metricDescriptor:
+  metricKind: "DELTA"
+  valueType: "INT64"

@@ -1,6 +1,10 @@
 __pycache__/
 *.pyc
 .env
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
 mlflow.db
 mlruns/
 mlartifacts/
@@ -9,3 +13,10 @@ mlartifacts/
 *.db
 .vscode/
 .idea/
+
+# Built artifact: `make index` locally, built into the Docker image in CI/CD.
+vectorstore/
+
+# Local review outputs (tasks review / failures)
+review_test_split.md
+eval_failures.md

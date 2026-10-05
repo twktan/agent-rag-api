@@ -1,0 +1,7 @@
+# LF in the repository and in every checkout, Windows included. Shell scripts break with CRLF,
+# and the corpus is hashed into the index manifest, so line endings must not vary by platform.
+* text=auto eol=lf
+
+*.faiss binary
+*.png   binary
+*.jpg   binary

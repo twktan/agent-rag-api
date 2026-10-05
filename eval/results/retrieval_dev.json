@@ -1,0 +1,813 @@
+{
+  "summary": {
+    "hit@1": {
+      "value": 0.8048780487804879,
+      "ci95": [
+        0.7261,
+        0.8652
+      ],
+      "n": 123
+    },
+    "hit@3": {
+      "value": 0.8943089430894309,
+      "ci95": [
+        0.8275,
+        0.9372
+      ],
+      "n": 123
+    },
+    "hit@5": {
+      "value": 0.9349593495934959,
+      "ci95": [
+        0.8769,
+        0.9667
+      ],
+      "n": 123
+    },
+    "mrr": 0.8648,
+    "latency_ms": {
+      "n": 123,
+      "mean": 40.5,
+      "p50": 38.1,
+      "p95": 58.8,
+      "p99": 88.7
+    }
+  },
+  "per_item": [
+    {
+      "id": "ai_research_lab-q1",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.8077
+    },
+    {
+      "id": "billing_pricing_enterprise-q1",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.7714
+    },
+    {
+      "id": "company_history_foundation_story-q1",
+      "rank": 1,
+      "top1_source": "company_history_foundation_story",
+      "top1_score": 0.7876
+    },
+    {
+      "id": "company_overview-q1",
+      "rank": 1,
+      "top1_source": "company_overview",
+      "top1_score": 0.6981
+    },
+    {
+      "id": "company_travel_offsites_events-q1",
+      "rank": 1,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.8094
+    },
+    {
+      "id": "compensation_benefits_philosophy-q1",
+      "rank": 1,
+      "top1_source": "compensation_benefits_philosophy",
+      "top1_score": 0.8296
+    },
+    {
+      "id": "data_science_ml_lifecycle-q1",
+      "rank": 1,
+      "top1_source": "data_science_ml_lifecycle",
+      "top1_score": 0.7037
+    },
+    {
+      "id": "devex_internal_tools-q1",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.7446
+    },
+    {
+      "id": "employee_career_growth_levels-q1",
+      "rank": null,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.6499
+    },
+    {
+      "id": "employee_onboarding_training-q1",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.6826
+    },
+    {
+      "id": "engineering_development_practices-q1",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7965
+    },
+    {
+      "id": "hr_benefits_policies-q1",
+      "rank": 1,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.7574
+    },
+    {
+      "id": "incident_response_runbook-q1",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.798
+    },
+    {
+      "id": "office_life_daily_workflow-q1",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.6704
+    },
+    {
+      "id": "product_cortex_suite-q1",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.7593
+    },
+    {
+      "id": "security_compliance_data_governance-q1",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.7346
+    },
+    {
+      "id": "sustainability_esg_responsibility-q1",
+      "rank": 1,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.712
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-q1",
+      "rank": 1,
+      "top1_source": "workplace_conflict_resolution_policy",
+      "top1_score": 0.7235
+    },
+    {
+      "id": "workplace_culture_values-q1",
+      "rank": 2,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7396
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-q1",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.6688
+    },
+    {
+      "id": "borderline-01",
+      "rank": 1,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.6329
+    },
+    {
+      "id": "borderline-04",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.6714
+    },
+    {
+      "id": "borderline-07",
+      "rank": 4,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.685
+    },
+    {
+      "id": "ai_research_lab-r1",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.8133
+    },
+    {
+      "id": "ai_research_lab-r2",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.7147
+    },
+    {
+      "id": "ai_research_lab-r3",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.7838
+    },
+    {
+      "id": "ai_research_lab-r4",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.8057
+    },
+    {
+      "id": "ai_research_lab-r5",
+      "rank": 1,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.7648
+    },
+    {
+      "id": "billing_pricing_enterprise-r1",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.6546
+    },
+    {
+      "id": "billing_pricing_enterprise-r2",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.5912
+    },
+    {
+      "id": "billing_pricing_enterprise-r3",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.8345
+    },
+    {
+      "id": "billing_pricing_enterprise-r4",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.7309
+    },
+    {
+      "id": "billing_pricing_enterprise-r5",
+      "rank": 1,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.7185
+    },
+    {
+      "id": "company_history_foundation_story-r1",
+      "rank": null,
+      "top1_source": "company_overview",
+      "top1_score": 0.7084
+    },
+    {
+      "id": "company_history_foundation_story-r2",
+      "rank": 4,
+      "top1_source": "company_overview",
+      "top1_score": 0.7191
+    },
+    {
+      "id": "company_history_foundation_story-r3",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.7264
+    },
+    {
+      "id": "company_history_foundation_story-r4",
+      "rank": 4,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7352
+    },
+    {
+      "id": "company_history_foundation_story-r5",
+      "rank": 7,
+      "top1_source": "company_overview",
+      "top1_score": 0.686
+    },
+    {
+      "id": "company_overview-r1",
+      "rank": 1,
+      "top1_source": "company_overview",
+      "top1_score": 0.6128
+    },
+    {
+      "id": "company_overview-r2",
+      "rank": 1,
+      "top1_source": "company_overview",
+      "top1_score": 0.7475
+    },
+    {
+      "id": "company_overview-r3",
+      "rank": 2,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.6929
+    },
+    {
+      "id": "company_overview-r4",
+      "rank": 2,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.824
+    },
+    {
+      "id": "company_overview-r5",
+      "rank": 6,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.662
+    },
+    {
+      "id": "company_travel_offsites_events-r1",
+      "rank": 1,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.7721
+    },
+    {
+      "id": "company_travel_offsites_events-r2",
+      "rank": 1,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.6703
+    },
+    {
+      "id": "company_travel_offsites_events-r3",
+      "rank": 1,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.6553
+    },
+    {
+      "id": "company_travel_offsites_events-r4",
+      "rank": 7,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.7128
+    },
+    {
+      "id": "company_travel_offsites_events-r5",
+      "rank": 1,
+      "top1_source": "company_travel_offsites_events",
+      "top1_score": 0.671
+    },
+    {
+      "id": "compensation_benefits_philosophy-r1",
+      "rank": 2,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.7008
+    },
+    {
+      "id": "compensation_benefits_philosophy-r2",
+      "rank": 1,
+      "top1_source": "compensation_benefits_philosophy",
+      "top1_score": 0.7999
+    },
+    {
+      "id": "compensation_benefits_philosophy-r3",
+      "rank": 1,
+      "top1_source": "compensation_benefits_philosophy",
+      "top1_score": 0.7723
+    },
+    {
+      "id": "compensation_benefits_philosophy-r4",
+      "rank": 1,
+      "top1_source": "compensation_benefits_philosophy",
+      "top1_score": 0.7222
+    },
+    {
+      "id": "compensation_benefits_philosophy-r5",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.6165
+    },
+    {
+      "id": "data_science_ml_lifecycle-r1",
+      "rank": 1,
+      "top1_source": "data_science_ml_lifecycle",
+      "top1_score": 0.7815
+    },
+    {
+      "id": "data_science_ml_lifecycle-r2",
+      "rank": 1,
+      "top1_source": "data_science_ml_lifecycle",
+      "top1_score": 0.7144
+    },
+    {
+      "id": "data_science_ml_lifecycle-r3",
+      "rank": 2,
+      "top1_source": "company_overview",
+      "top1_score": 0.7785
+    },
+    {
+      "id": "data_science_ml_lifecycle-r4",
+      "rank": 1,
+      "top1_source": "data_science_ml_lifecycle",
+      "top1_score": 0.678
+    },
+    {
+      "id": "data_science_ml_lifecycle-r5",
+      "rank": 4,
+      "top1_source": "ai_research_lab",
+      "top1_score": 0.7116
+    },
+    {
+      "id": "devex_internal_tools-r1",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.72
+    },
+    {
+      "id": "devex_internal_tools-r2",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.6416
+    },
+    {
+      "id": "devex_internal_tools-r3",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.687
+    },
+    {
+      "id": "devex_internal_tools-r4",
+      "rank": 6,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7468
+    },
+    {
+      "id": "devex_internal_tools-r5",
+      "rank": 1,
+      "top1_source": "devex_internal_tools",
+      "top1_score": 0.652
+    },
+    {
+      "id": "employee_career_growth_levels-r1",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.6786
+    },
+    {
+      "id": "employee_career_growth_levels-r2",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.6455
+    },
+    {
+      "id": "employee_career_growth_levels-r3",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.7596
+    },
+    {
+      "id": "employee_career_growth_levels-r4",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.6587
+    },
+    {
+      "id": "employee_career_growth_levels-r5",
+      "rank": 1,
+      "top1_source": "employee_career_growth_levels",
+      "top1_score": 0.7239
+    },
+    {
+      "id": "employee_onboarding_training-r1",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.8615
+    },
+    {
+      "id": "employee_onboarding_training-r2",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.5714
+    },
+    {
+      "id": "employee_onboarding_training-r3",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.7392
+    },
+    {
+      "id": "employee_onboarding_training-r4",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.6324
+    },
+    {
+      "id": "employee_onboarding_training-r5",
+      "rank": 1,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.6728
+    },
+    {
+      "id": "engineering_development_practices-r1",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7953
+    },
+    {
+      "id": "engineering_development_practices-r2",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.6404
+    },
+    {
+      "id": "engineering_development_practices-r3",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7598
+    },
+    {
+      "id": "engineering_development_practices-r4",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7723
+    },
+    {
+      "id": "engineering_development_practices-r5",
+      "rank": 1,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.6515
+    },
+    {
+      "id": "hr_benefits_policies-r1",
+      "rank": 1,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.8065
+    },
+    {
+      "id": "hr_benefits_policies-r2",
+      "rank": 1,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.5827
+    },
+    {
+      "id": "hr_benefits_policies-r3",
+      "rank": 2,
+      "top1_source": "compensation_benefits_philosophy",
+      "top1_score": 0.7485
+    },
+    {
+      "id": "hr_benefits_policies-r4",
+      "rank": 2,
+      "top1_source": "employee_onboarding_training",
+      "top1_score": 0.676
+    },
+    {
+      "id": "hr_benefits_policies-r5",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.7208
+    },
+    {
+      "id": "incident_response_runbook-r1",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.7885
+    },
+    {
+      "id": "incident_response_runbook-r2",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.6408
+    },
+    {
+      "id": "incident_response_runbook-r3",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.758
+    },
+    {
+      "id": "incident_response_runbook-r4",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.6662
+    },
+    {
+      "id": "incident_response_runbook-r5",
+      "rank": 1,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.7138
+    },
+    {
+      "id": "office_life_daily_workflow-r1",
+      "rank": 1,
+      "top1_source": "office_life_daily_workflow",
+      "top1_score": 0.651
+    },
+    {
+      "id": "office_life_daily_workflow-r2",
+      "rank": 1,
+      "top1_source": "office_life_daily_workflow",
+      "top1_score": 0.6133
+    },
+    {
+      "id": "office_life_daily_workflow-r3",
+      "rank": 1,
+      "top1_source": "office_life_daily_workflow",
+      "top1_score": 0.7166
+    },
+    {
+      "id": "office_life_daily_workflow-r4",
+      "rank": 1,
+      "top1_source": "office_life_daily_workflow",
+      "top1_score": 0.6078
+    },
+    {
+      "id": "office_life_daily_workflow-r5",
+      "rank": 1,
+      "top1_source": "office_life_daily_workflow",
+      "top1_score": 0.7202
+    },
+    {
+      "id": "product_cortex_suite-r1",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.758
+    },
+    {
+      "id": "product_cortex_suite-r2",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.6714
+    },
+    {
+      "id": "product_cortex_suite-r3",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.7616
+    },
+    {
+      "id": "product_cortex_suite-r4",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.7714
+    },
+    {
+      "id": "product_cortex_suite-r5",
+      "rank": 1,
+      "top1_source": "product_cortex_suite",
+      "top1_score": 0.7963
+    },
+    {
+      "id": "security_compliance_data_governance-r1",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.7357
+    },
+    {
+      "id": "security_compliance_data_governance-r2",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.581
+    },
+    {
+      "id": "security_compliance_data_governance-r3",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.7382
+    },
+    {
+      "id": "security_compliance_data_governance-r4",
+      "rank": 1,
+      "top1_source": "security_compliance_data_governance",
+      "top1_score": 0.7131
+    },
+    {
+      "id": "security_compliance_data_governance-r5",
+      "rank": 2,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.6376
+    },
+    {
+      "id": "sustainability_esg_responsibility-r1",
+      "rank": 1,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.6902
+    },
+    {
+      "id": "sustainability_esg_responsibility-r2",
+      "rank": 1,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.7349
+    },
+    {
+      "id": "sustainability_esg_responsibility-r3",
+      "rank": 1,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.652
+    },
+    {
+      "id": "sustainability_esg_responsibility-r4",
+      "rank": 2,
+      "top1_source": "billing_pricing_enterprise",
+      "top1_score": 0.6849
+    },
+    {
+      "id": "sustainability_esg_responsibility-r5",
+      "rank": 1,
+      "top1_source": "sustainability_esg_responsibility",
+      "top1_score": 0.6966
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-r1",
+      "rank": 1,
+      "top1_source": "workplace_conflict_resolution_policy",
+      "top1_score": 0.813
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-r2",
+      "rank": 1,
+      "top1_source": "workplace_conflict_resolution_policy",
+      "top1_score": 0.6436
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-r3",
+      "rank": 1,
+      "top1_source": "workplace_conflict_resolution_policy",
+      "top1_score": 0.689
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-r4",
+      "rank": 2,
+      "top1_source": "incident_response_runbook",
+      "top1_score": 0.7068
+    },
+    {
+      "id": "workplace_conflict_resolution_policy-r5",
+      "rank": 1,
+      "top1_source": "workplace_conflict_resolution_policy",
+      "top1_score": 0.6427
+    },
+    {
+      "id": "workplace_culture_values-r1",
+      "rank": 1,
+      "top1_source": "workplace_culture_values",
+      "top1_score": 0.6929
+    },
+    {
+      "id": "workplace_culture_values-r2",
+      "rank": 2,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.5545
+    },
+    {
+      "id": "workplace_culture_values-r3",
+      "rank": null,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.7197
+    },
+    {
+      "id": "workplace_culture_values-r4",
+      "rank": 4,
+      "top1_source": "hr_benefits_policies",
+      "top1_score": 0.6964
+    },
+    {
+      "id": "workplace_culture_values-r5",
+      "rank": null,
+      "top1_source": "engineering_development_practices",
+      "top1_score": 0.6354
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-r1",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.6798
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-r2",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.663
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-r3",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.6948
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-r4",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.7025
+    },
+    {
+      "id": "workplace_food_dining_wellness_program-r5",
+      "rank": 1,
+      "top1_source": "workplace_food_dining_wellness_program",
+      "top1_score": 0.7422
+    }
+  ],
+  "similarity_router": {
+    "threshold_fit_on_dev": 0.5706,
+    "test_accuracy": {
+      "value": 0.918918918918919,
+      "ci95": [
+        0.8342,
+        0.9623
+      ],
+      "n": 74
+    },
+    "dev_top1_rag": {
+      "min": 0.5545,
+      "mean": 0.7074
+    },
+    "dev_top1_direct": {
+      "max": 0.6229,
+      "mean": 0.5559
+    }
+  },
+  "meta": {
+    "split": "dev",
+    "git_sha": "ad9d6d9",
+    "timestamp": "2026-10-05T11:40:48Z",
+    "index": {
+      "embedding_model": "BAAI/bge-small-en-v1.5",
+      "query_instruction": "Represent this sentence for searching relevant passages: ",
+      "chunker": "char",
+      "chunk_size": 500,
+      "chunk_overlap": 100,
+      "chunk_header": true,
+      "n_docs": 20,
+      "index_hash": "4ebbca5c5a03",
+      "built_at": "2026-10-05T11:39:40.546626+00:00",
+      "n_chunks": 227,
+      "dim": 384
+    }
+  }
+}
