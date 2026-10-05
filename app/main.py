@@ -34,7 +34,7 @@ logger = logging.getLogger("app")
 DESCRIPTION = """
 Internal AI assistant for employees of the fictional company **Trevor Tan Incorporated (TTI)**.
 
-A single LangGraph agent handles every question:
+An agentic RAG workflow, built with LangGraph (LLM routing plus a self-critique loop), handles every question:
 - **rag**: TTI-specific questions. It retrieves from the internal docs, writes an answer with
   `[source]` citations, and a critic checks it for grounding, relevance, completeness and citations.
   If the answer fails, the agent revises it or searches again, up to 2 refinements.
